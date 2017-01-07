@@ -8,12 +8,12 @@ node {
    }
    stage('Build') {
       if (isUnix()) {
-         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+         sh "'${mvnHome}/bin/mvn' clean package"
       } else {
-         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+         bat(/"${mvnHome}\bin\mvn" clean package/)
       }
    }
    stage('Results') {
-      archive 'target/*.jar'
+      archive 'target/*.war'
    }
 }
